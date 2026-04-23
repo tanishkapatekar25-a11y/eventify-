@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - EventHub</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  transition: 0.3s;
+}
+
+.light { background: #f4f4f4; color: #333; }
+.dark { background: #121212; color: white; }
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: teal;
+  color: white;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.toggle { cursor: pointer; }
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: teal;
+  color: white;
+}
+</style>
+</head>
+
+<body class="light">
+
+<!-- NAVBAR -->
+<nav>
+  <div><b>EventHub</b></div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="categories.html">Categories</a>
+    <a href="#">Gallery</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <span class="toggle" onclick="toggleTheme()">🌙</span>
+  </div>
+</nav>
+
+<h1 style="text-align:center;">Event Gallery</h1>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <img src="https://source.unsplash.com/400x300/?football" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?concert" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?conference" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?coding" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?trekking" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?beach" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?dj-party" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?science" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?leadership" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?stadium" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?music-festival" onclick="openLightbox(this)">
+  <img src="https://source.unsplash.com/400x300/?travel" onclick="openLightbox(this)">
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close" onclick="closeLightbox()">✖</span>
+  <img id="lightboxImg">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 EventHub Gallery</p>
+</footer>
+
+<script>
+/* THEME */
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
+}
+
+/* LIGHTBOX */
+function openLightbox(img) {
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightboxImg").src = img.src;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
